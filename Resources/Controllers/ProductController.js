@@ -1,4 +1,4 @@
-const Product = require("../Models/Product");
+const ProductModel = require("../Models/ProductModel");
 
 // create method for a single product
 exports.createNewProduct = async (req, res) => {
@@ -9,7 +9,7 @@ exports.createNewProduct = async (req, res) => {
     const image = req.body.image;
     const ratings = req.body.ratings;
     const desc = req.body.desc;
-    const newProduct = {
+    const product = {
       title,
       price,
       prevPrice,
@@ -17,6 +17,7 @@ exports.createNewProduct = async (req, res) => {
       ratings,
       desc,
     };
+    const newProduct = await ProductModel.create(product);
     res.json({
       message: "New product created successfully",
       newProduct,
@@ -27,3 +28,13 @@ exports.createNewProduct = async (req, res) => {
     });
   }
 };
+
+// get method for all products
+exports.getAllProducts = async (req, res) => {
+    try {
+        const allProducts = await ProductModel.find({})
+        res.status(200).json({message:"All products found successfully", blogs:allProducts})
+    } catch (error) {
+        res.status(404).json({error})
+    }
+}
