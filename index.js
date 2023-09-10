@@ -23,7 +23,7 @@ mongoose.connect(URI).then(() => {
   console.log(`Database connection is successful 🛢`.green.bold);
 });
 
-app.use("/api/products/", productRoutes);
+app.use("/api/v1/products/", productRoutes);
 
 app.get("/", (req, res) => {
   res.json("Hello world!");
