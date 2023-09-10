@@ -13,17 +13,17 @@ const PORT = 3000;
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-const URI = process.env.MONGO_URI;
+const productRoutes = require("./Resources/Routes/ProductRoutes")
+const URI = process.env.MONGO_URI; 
 
-mongoose
-  //   .connect(
-  //     `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@atlascluster.qkvdpja.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
-  //   )
-  .connect(URI)
-  .then(() => {
-    console.log(`Database connection is successful 🛢`.green.bold);
-  });
+mongoose.connect(URI).then(() => {
+  console.log(`Database connection is successful 🛢`.green.bold);
+});
+
+app.use("/api/products/", productRoutes);
 
 app.get("/", (req, res) => {
   res.json("Hello world!");
