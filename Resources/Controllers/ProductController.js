@@ -33,7 +33,7 @@ exports.createNewProduct = async (req, res) => {
 exports.getAllProducts = async (req, res) => {
     try {
         const allProducts = await ProductModel.find({})
-        res.status(200).json({message:"All products found successfully", blogs:allProducts})
+        res.status(200).json({message:"All products found successfully", products:allProducts})
     } catch (error) {
         res.status(404).json({error})
     }
