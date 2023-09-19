@@ -2,9 +2,9 @@ const router = require("express").Router();
 const {
   createNewFruits,
   getAllFruits,
-} = require("../Controllers/ProductController");
+} = require("../Controllers/FruitsController");
 
 router.post("/createNewFruits", createNewFruits);
-router.get("/fruits", getAllFruits);
+router.get("/", getAllFruits);
 
 module.exports = router;

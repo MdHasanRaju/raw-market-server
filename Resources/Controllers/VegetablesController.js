@@ -1,6 +1,6 @@
 const VegetablesModel = require("../Models/VegetablesModel");
 
-// post method for creating a single product
+// post method for creating a single vegetables item
 exports.createNewVegetables = async (req, res) => {
   try {
     const title = req.body.title;
@@ -30,7 +30,7 @@ exports.createNewVegetables = async (req, res) => {
   }
 };
 
-// get method for fetching all products
+// get method for fetching all vegetables
 exports.getAllVegetables = async (req, res) => {
   try {
     const vegetables = await VegetablesModel.find({});
@@ -42,3 +42,4 @@ exports.getAllVegetables = async (req, res) => {
     res.status(404).json({ error });
   }
 };
+

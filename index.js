@@ -17,13 +17,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const productRoutes = require("./Resources/Routes/ProductRoutes")
-const URI = process.env.MONGO_URI; 
+const vegetablesRoutes = require("./Resources/Routes/VegetablesRoutes")
+const fruitsRoutes = require("./Resources/Routes/FruitsRoutes")
 
+const URI = process.env.MONGO_URI; 
 mongoose.connect(URI).then(() => {
   console.log(`Database connection is successful 🛢`.green.bold);
 });
 
 app.use("/api/v1/products/", productRoutes);
+app.use("/api/v1/vegetables/", vegetablesRoutes);
+app.use("/api/v1/fruits/", fruitsRoutes);
 
 app.get("/", (req, res) => {
   res.json("Hello world!");
