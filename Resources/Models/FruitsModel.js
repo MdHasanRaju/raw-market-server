@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const productSchema = new Schema({
+const FruitsSchema = new Schema({
   title: {
     type: String,
     required: [true, "title is not provided"],
@@ -28,5 +28,5 @@ const productSchema = new Schema({
   },
 });
 
-const ProductModel = mongoose.model("ProductModel", productSchema);
-module.exports = ProductModel;
+const FruitsModel = mongoose.model("FruitsModel", FruitsSchema);
+module.exports = FruitsModel;
