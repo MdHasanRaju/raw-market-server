@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const vegetablesSchema = new Schema({
+const vegetableSchema = new Schema({
   title: {
     type: String,
     required: [true, "title is not provided"],
   },
-  image: {
+  photoUrl: {
     type: String,
     required: true,
   },
@@ -28,5 +28,5 @@ const vegetablesSchema = new Schema({
   },
 });
 
-const VegetablesModel = mongoose.model("VegetablesModel", vegetablesSchema);
-module.exports = VegetablesModel;
+const VegetableModel = mongoose.model("VegetableModel", vegetableSchema);
+module.exports = VegetableModel;

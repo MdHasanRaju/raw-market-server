@@ -1,10 +1,10 @@
 const router = require("express").Router();
 const {
-  createNewVegetables,
+  createNewVegetable,
   getAllVegetables,
-} = require("../Controllers/VegetablesController");
+} = require("../Controllers/VegetableController");
 
-router.post("/createNewVegetables", createNewVegetables);
+router.post("/createNewVegetable", createNewVegetable);
 router.get("/", getAllVegetables);
 
 module.exports = router;

@@ -1,26 +1,26 @@
-const VegetablesModel = require("../Models/VegetablesModel");
+const VegetableModel = require("../Models/VegetableModel");
 
 // post method for creating a single vegetables item
-exports.createNewVegetables = async (req, res) => {
+exports.createNewVegetable = async (req, res) => {
   try {
     const title = req.body.title;
-    const image = req.body.image;
+    const photoUrl = req.body.photoUrl;
     const prevPrice = req.body.prevPrice;
     const price = req.body.price;
     const ratings = req.body.ratings;
     const description = req.body.description;
-    const vegetables = {
+    const vegetable = {
       title,
       price,
       prevPrice,
-      image,
+      photoUrl,
       ratings,
       description,
     };
-    const newVegetables = await VegetablesModel.create(vegetables);
+    const newVegetable = await VegetableModel.create(vegetable);
     res.json({
       message: "New vegetables created successfully",
-      newVegetables,
+      newVegetable,
     });
   } catch (error) {
     res.status(404).json({
@@ -33,7 +33,7 @@ exports.createNewVegetables = async (req, res) => {
 // get method for fetching all vegetables
 exports.getAllVegetables = async (req, res) => {
   try {
-    const vegetables = await VegetablesModel.find({});
+    const vegetables = await VegetableModel.find({});
     res.status(200).json({
       message: "All vegetables found successfully",
       vegetables,

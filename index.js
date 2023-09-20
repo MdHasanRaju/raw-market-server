@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const app = express();
-const colors = require("colors");
+require("colors");
 require("dotenv").config();
 
 const PORT = 3000;
@@ -17,8 +17,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const productRoutes = require("./Resources/Routes/ProductRoutes")
-const vegetablesRoutes = require("./Resources/Routes/VegetablesRoutes")
-const fruitsRoutes = require("./Resources/Routes/FruitsRoutes")
+const vegetableRoutes = require("./Resources/Routes/VegetableRoutes")
+const fruitRoutes = require("./Resources/Routes/FruitRoutes")
 
 const URI = process.env.MONGO_URI; 
 mongoose.connect(URI).then(() => {
@@ -26,8 +26,8 @@ mongoose.connect(URI).then(() => {
 });
 
 app.use("/api/v1/products/", productRoutes);
-app.use("/api/v1/vegetables/", vegetablesRoutes);
-app.use("/api/v1/fruits/", fruitsRoutes);
+app.use("/api/v1/vegetables/", vegetableRoutes);
+app.use("/api/v1/fruits/", fruitRoutes);
 
 app.get("/", (req, res) => {
   res.json("Hello world!");

@@ -6,7 +6,7 @@ const productSchema = new Schema({
     type: String,
     required: [true, "title is not provided"],
   },
-  image: {
+  photoUrl: {
     type: String,
     required: true,
   },

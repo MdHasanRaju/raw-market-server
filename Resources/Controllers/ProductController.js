@@ -4,7 +4,7 @@ const ProductModel = require("../Models/ProductModel");
 exports.createNewProduct = async (req, res) => {
   try {
     const title = req.body.title;
-    const image = req.body.image;
+    const photoUrl = req.body.photoUrl;
     const prevPrice = req.body.prevPrice;
     const price = req.body.price;
     const ratings = req.body.ratings;
@@ -13,7 +13,7 @@ exports.createNewProduct = async (req, res) => {
       title,
       price,
       prevPrice,
-      image,
+      photoUrl,
       ratings,
       description,
     };
